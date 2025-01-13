@@ -4,10 +4,13 @@ from decouple import config
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = config('SECRET_KEY', default='unsafe-secret-key')
-# DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['portfolio-p2k3.onrender.com', 'portfolio-onu1wc3e3-krish-patils-projects.vercel.app']
+
+ALLOWED_HOSTS = [
+    'portfolio-p2k3.onrender.com',
+    'portfolio-onu1wc3e3-krish-patils-projects.vercel.app',
+]
 
 # Installed apps
 INSTALLED_APPS = [
@@ -52,10 +55,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_ROOT = '/var/lib/media'
-
+CLOUDINARY_URL = config('CLOUDINARY_URL')
+MEDIA_URL = '/media/'  # This ensures Django correctly fetches URLs from Cloudinary.
 
 # Templates
 TEMPLATES = [
@@ -100,7 +101,3 @@ USE_TZ = True
 
 # Default primary key field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-CLOUDINARY_URL = config('CLOUDINARY_URL')
-MEDIA_URL = 'https://res.cloudinary.com/ddbjx5hpn/'
