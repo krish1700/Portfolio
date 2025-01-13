@@ -4,9 +4,9 @@ from decouple import config
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+DEBUG = True
 SECRET_KEY = config('SECRET_KEY', default='unsafe-secret-key')
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['portfolio-p2k3.onrender.com', 'portfolio-onu1wc3e3-krish-patils-projects.vercel.app']
 
 # Installed apps
