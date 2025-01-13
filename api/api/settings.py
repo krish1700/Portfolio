@@ -2,18 +2,12 @@ from pathlib import Path
 import os
 from decouple import config
 import dj_database_url
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = config('DEBUG', default=False, cast=bool)
-SECRET_KEY = config('SECRET_KEY', default='unsafe-secret-key')
 
-ALLOWED_HOSTS = [
-    'portfolio-p2k3.onrender.com',
-    'portfolio-onu1wc3e3-krish-patils-projects.vercel.app',
-]
+SECRET_KEY = config('SECRET_KEY', default='unsafe-secret-key')
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = ['portfolio-p2k3.onrender.com', 'portfolio-onu1wc3e3-krish-patils-projects.vercel.app']
 
 # Installed apps
 INSTALLED_APPS = [
@@ -43,7 +37,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Enhanced CORS Settings
+# CORS
 CORS_ALLOWED_ORIGINS = [
     "https://portfolio-p2k3.onrender.com",
     "https://portfolio-onu1wc3e3-krish-patils-projects.vercel.app",
@@ -79,15 +73,17 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Cloudinary Configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME', default='your_default_cloud_name'),
     'API_KEY': config('CLOUDINARY_API_KEY', default='your_default_api_key'),
     'API_SECRET': config('CLOUDINARY_API_SECRET', default='your_default_api_secret')
 }
-
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = '/var/lib/media'
+
 
 # Templates
 TEMPLATES = [
@@ -132,3 +128,7 @@ USE_TZ = True
 
 # Default primary key field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_URL = config('CLOUDINARY_URL')
+MEDIA_URL = 'https://res.cloudinary.com/ddbjx5hpn/'
