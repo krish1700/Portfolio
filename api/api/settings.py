@@ -64,7 +64,8 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://portfolio-p2k3.onrender.com",  # React frontend URL
+    "https://portfolio-p2k3.onrender.com",
+    "https://portfolio-onu1wc3e3-krish-patils-projects.vercel.app",  # React frontend URL
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
