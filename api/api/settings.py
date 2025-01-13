@@ -128,7 +128,3 @@ USE_TZ = True
 
 # Default primary key field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-CLOUDINARY_URL = config('CLOUDINARY_URL')
-MEDIA_URL = 'https://res.cloudinary.com/ddbjx5hpn/'
