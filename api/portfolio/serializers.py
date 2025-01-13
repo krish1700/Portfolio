@@ -13,11 +13,6 @@ class EducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education
         fields = ['id', 'school', 'degree', 'years', 'image', 'image_url', 'ordinal']
-    
-    def get_image_url(self, obj):
-        if obj.image:
-            return obj.image.url
-        return None
 
 class WorkSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
@@ -25,11 +20,6 @@ class WorkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Work
         fields = ['id', 'company', 'years', 'description', 'image', 'image_url', 'ordinal']
-    
-    def get_image_url(self, obj):
-        if obj.image:
-            return obj.image.url
-        return None
 
 class PortfolioSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
@@ -37,11 +27,7 @@ class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portfolio
         fields = ['id', 'title', 'description', 'image', 'image_url', 'url', 'years', 'ordinal']
-    
-    def get_image_url(self, obj):
-        if obj.image:
-            return obj.image.url
-        return None
+
 
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:
