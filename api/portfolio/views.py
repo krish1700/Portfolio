@@ -13,19 +13,16 @@ class EducationViewSet(viewsets.ModelViewSet):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    parser_classes = (parsers.MultiPartParser, parsers.FormParser)
 
 class WorkViewSet(viewsets.ModelViewSet):
     queryset = Work.objects.all()
     serializer_class = WorkSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    parser_classes = (parsers.MultiPartParser, parsers.FormParser)
 
 class PortfolioViewSet(viewsets.ModelViewSet):
     queryset = Portfolio.objects.all()
     serializer_class = PortfolioSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    parser_classes = (parsers.MultiPartParser, parsers.FormParser)
 
 class SkillsViewSet(viewsets.ModelViewSet):
     queryset = Skills.objects.all()
