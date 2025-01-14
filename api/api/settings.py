@@ -7,22 +7,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='unsafe-secret-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['portfolio-p2k3.onrender.com', 'portfolio-onu1wc3e3-krish-patils-projects.vercel.app']
+CORS_ALLOWED_ORIGINS = [
+    "https://portfolio-p2k3.onrender.com",
+    "https://portfolio-onu1wc3e3-krish-patils-projects.vercel.app",
+    "http://localhost:3000",  # Add this for local development
+    "http://localhost:5173",  # Add this if using Vite
+]
 
 # Installed apps
 INSTALLED_APPS = [
-    'rest_framework',
-    'portfolio',
-    'corsheaders',
-    'cloudinary',
-    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'portfolio',
+    'corsheaders',
+    'cloudinary_storage',  # Move this before django.contrib.staticfiles
+    'cloudinary',
 ]
+
 
 # Middleware
 MIDDLEWARE = [
@@ -74,10 +80,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME', default='your_default_cloud_name'),
-    'API_KEY': config('CLOUDINARY_API_KEY', default='your_default_api_key'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET', default='your_default_api_secret')
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET')
 }
+
+# Add these Cloudinary settings
+CLOUDINARY_URL = config('CLOUDINARY_URL', default='cloudinary://null')
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
 # MEDIA_URL = '/media/'
@@ -128,3 +137,27 @@ USE_TZ = True
 
 # Default primary key field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Security settings
+SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=True, cast=bool)
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_BROWSER_XSS_FILTER = True
+
+# File Upload settings
+FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50MB
+
+# Cloudinary specific settings
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+    'SECURE': True,
+    'STATIC_TRANSFORMATIONS': {
+        'image': {  # default transformation for images
+            'quality': 'auto:good',
+            'fetch_format': 'auto',
+        }
+    }
+}
