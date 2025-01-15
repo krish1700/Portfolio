@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='unsafe-secret-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['portfolio-p2k3.onrender.com', 'https://portfolio-git-main-krish-patils-projects.vercel.app','portfolio-onu1wc3e3-krish-patils-projects.vercel.app']
+ALLOWED_HOSTS = ['portfolio-p2k3.onrender.com', 'portfolio-git-main-krish-patils-projects.vercel.app','portfolio-onu1wc3e3-krish-patils-projects.vercel.app']
 
 # Installed apps
 INSTALLED_APPS = [
@@ -41,7 +41,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "https://portfolio-p2k3.onrender.com",
     "https://portfolio-git-main-krish-patils-projects.vercel.app",
-    "portfolio-onu1wc3e3-krish-patils-projects.vercel.app,"
+    "https://portfolio-onu1wc3e3-krish-patils-projects.vercel.app,"
 ]
 
 # URL configuration
