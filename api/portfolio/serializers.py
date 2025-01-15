@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class EducationSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
+    image = serializers.FileField(required=False)  # Allow optional updates for images
 
     class Meta:
         model = Education
@@ -16,14 +17,9 @@ class EducationSerializer(serializers.ModelSerializer):
 
     def get_image_url(self, obj):
         if obj.image:
-            # Use Cloudinary's build_url method to get the proper URL
             return obj.image.build_url(secure=True)
         return None
 
-    def validate_image(self, value):
-        if value and not value.name.lower().endswith(('png', 'jpg', 'jpeg')):
-            raise serializers.ValidationError("Only PNG, JPG, and JPEG formats are supported.")
-        return value
 
 class WorkSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
