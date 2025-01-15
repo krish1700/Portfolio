@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class EducationSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
-    
+
     class Meta:
         model = Education
         fields = ['id', 'school', 'degree', 'years', 'image', 'image_url', 'ordinal']
@@ -18,6 +18,11 @@ class EducationSerializer(serializers.ModelSerializer):
         if obj.image:
             return obj.image.url
         return None
+
+    def validate_image(self, value):
+        if value and not value.name.lower().endswith(('png', 'jpg', 'jpeg')):
+            raise serializers.ValidationError("Only PNG, JPG, and JPEG formats are supported.")
+        return value
 
 class WorkSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
