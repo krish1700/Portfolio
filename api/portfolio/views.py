@@ -4,7 +4,7 @@ from rest_framework import permissions, viewsets, parsers, status
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
 from .serializers import UserSerializer, EducationSerializer, PortfolioSerializer, WorkSerializer, SkillSerializer
-from .models import Education, Work, Portfolio, Skills
+from .models import Education, Work, Portfolio, Skill
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -102,7 +102,7 @@ class PortfolioViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class SkillsViewSet(viewsets.ModelViewSet):
-    queryset = Skills.objects.all().order_by('ordinal')
+class SkillViewSet(viewsets.ModelViewSet):  # Changed from SkillsViewSet
+    queryset = Skill.objects.all().order_by('ordinal')
     serializer_class = SkillSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
