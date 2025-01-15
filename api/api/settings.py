@@ -6,10 +6,12 @@ from pathlib import Path
 from decouple import Config, RepositoryEnv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+env_path = BASE_DIR / '.env'
+config = Config(RepositoryEnv(env_path))
 
 SECRET_KEY = config('SECRET_KEY', default='unsafe-secret-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
-CORS_ALLOWED_ORIGINS = [
+ALLOWED_HOSTS = [
     "https://portfolio-p2k3.onrender.com",
     "https://portfolio-onu1wc3e3-krish-patils-projects.vercel.app",
     "http://localhost:3000",  # Add this for local development
