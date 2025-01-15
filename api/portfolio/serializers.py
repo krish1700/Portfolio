@@ -51,4 +51,4 @@ class PortfolioSerializer(serializers.ModelSerializer):
 class SkillsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skills  # Update to match new model name
-        fields = '__all__'
+        fields = ['id', 'skillName', 'ordinal']
