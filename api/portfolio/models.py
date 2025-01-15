@@ -61,7 +61,7 @@ class Portfolio(models.Model):
             return self.image.build_url(secure=True)
         return None
 
-class Skill(models.Model):  # Changed from Skills to Skill
+class Skills(models.Model):  # Changed from Skills to Skill
     skillName = models.CharField(max_length=255)
     ordinal = models.IntegerField()
     

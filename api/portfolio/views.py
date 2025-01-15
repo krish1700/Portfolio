@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets, parsers, status
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
-from .serializers import UserSerializer, EducationSerializer, PortfolioSerializer, WorkSerializer, SkillSerializer
-from .models import Education, Work, Portfolio, Skill
+from .serializers import UserSerializer, EducationSerializer, PortfolioSerializer, WorkSerializer, SkillsSerializer
+from .models import Education, Work, Portfolio, Skills
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -103,6 +103,6 @@ class PortfolioViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class SkillViewSet(viewsets.ModelViewSet):  # Changed from SkillsViewSet
-    queryset = Skill.objects.all().order_by('ordinal')
-    serializer_class = SkillSerializer
+    queryset = Skills.objects.all().order_by('ordinal')
+    serializer_class = SkillsSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
