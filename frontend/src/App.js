@@ -247,12 +247,12 @@ const HeroSection = ({ homeRef, darkMode }) => (
           Krish Naresh Patil
         </h1>
         <p className={`text-xl max-w-3xl mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-          Full Stack Developer with a passion for building scalable web applications
+          Innovative Full Stack Developer with expertise in scalable web applications, cloud solutions, and cutting-edge technologies.
         </p>
         
         <div className="flex gap-6 justify-center">
           <a
-            href="/resume.pdf"
+            href="frontend/public/Resume_KrishPatil.pdf"
             className="inline-flex items-center px-6 py-3 bg-cyan-500 text-white rounded-full hover:bg-cyan-600 transition-colors"
           >
             <Download className="w-5 h-5 mr-2" />
@@ -456,7 +456,7 @@ const Footer = ({ darkMode }) => (
         <div>
           <h4 className="text-lg font-semibold mb-4">About Me</h4>
           <p className="text-gray-400">
-            Passionate full-stack developer creating innovative solutions and pushing technological boundaries.
+            Innovative Full Stack Developer with expertise in scalable web applications, cloud solutions, and cutting-edge technologies.
           </p>
         </div>
         <div>
@@ -469,7 +469,7 @@ const Footer = ({ darkMode }) => (
               <a href="portfolioRef" className="text-gray-400 hover:text-white transition-colors">Portfolio</a>
             </li>
             <li>
-              <a href="./resume.pdf" className="text-gray-400 hover:text-white transition-colors">Resume</a>
+              <a href="./frontend/public/Resume_KrishPatil.pdf" className="text-gray-400 hover:text-white transition-colors">Resume</a>
             </li>
           </ul>
         </div>
