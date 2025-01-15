@@ -252,7 +252,7 @@ const HeroSection = ({ homeRef, darkMode }) => (
         
         <div className="flex gap-6 justify-center">
           <a
-            href="frontend/public/Resume_KrishPatil.pdf"
+            href="/Resume_KrishPatil.pdf"
             className="inline-flex items-center px-6 py-3 bg-cyan-500 text-white rounded-full hover:bg-cyan-600 transition-colors"
           >
             <Download className="w-5 h-5 mr-2" />
@@ -469,7 +469,7 @@ const Footer = ({ darkMode }) => (
               <a href="portfolioRef" className="text-gray-400 hover:text-white transition-colors">Portfolio</a>
             </li>
             <li>
-              <a href="./frontend/public/Resume_KrishPatil.pdf" className="text-gray-400 hover:text-white transition-colors">Resume</a>
+              <a href="/Resume_KrishPatil.pdf" className="text-gray-400 hover:text-white transition-colors">Resume</a>
             </li>
           </ul>
         </div>
