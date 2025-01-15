@@ -23,11 +23,12 @@ class EducationSerializer(serializers.ModelSerializer):
 
 class WorkSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
-    
+    image = serializers.FileField(required=False)  # Allow optional updates for images
+
     class Meta:
         model = Work
         fields = ['id', 'company', 'years', 'description', 'image', 'image_url', 'ordinal']
-    
+
     def get_image_url(self, obj):
         if obj.image:
             return obj.image.build_url(secure=True)
@@ -36,11 +37,12 @@ class WorkSerializer(serializers.ModelSerializer):
 
 class PortfolioSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
-    
+    image = serializers.FileField(required=False)  # Allow optional updates for images
+
     class Meta:
         model = Portfolio
         fields = ['id', 'title', 'description', 'image', 'image_url', 'url', 'years', 'ordinal']
-    
+
     def get_image_url(self, obj):
         if obj.image:
             return obj.image.build_url(secure=True)
