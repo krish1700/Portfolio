@@ -2,8 +2,13 @@ from pathlib import Path
 import os
 from decouple import config
 import dj_database_url
+from pathlib import Path
+from decouple import Config, RepositoryEnv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+env_path = Path('/Users/krish/Portfolio/Untitled/api/api/.env')
+config = Config(RepositoryEnv(env_path))
+
 
 SECRET_KEY = config('SECRET_KEY', default='unsafe-secret-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -13,6 +18,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Add this for local development
     "http://localhost:5173",  # Add this if using Vite
 ]
+print("CLOUDINARY_API_SECRET:", config('CLOUDINARY_API_SECRET', default='Not Found'))
+
 
 # Installed apps
 INSTALLED_APPS = [
@@ -89,6 +96,8 @@ CLOUDINARY_STORAGE = {
 CLOUDINARY_URL = config('CLOUDINARY_URL', default='cloudinary://null')
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
+print("CLOUDINARY_API_SECRET:", config('CLOUDINARY_API_SECRET', default='Not Found'))
+
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_ROOT = '/var/lib/media'
