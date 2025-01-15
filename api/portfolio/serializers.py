@@ -16,7 +16,8 @@ class EducationSerializer(serializers.ModelSerializer):
 
     def get_image_url(self, obj):
         if obj.image:
-            return obj.image.url
+            # Use Cloudinary's build_url method to get the proper URL
+            return obj.image.build_url(secure=True)
         return None
 
     def validate_image(self, value):
@@ -33,8 +34,9 @@ class WorkSerializer(serializers.ModelSerializer):
     
     def get_image_url(self, obj):
         if obj.image:
-            return obj.image.url
+            return obj.image.build_url(secure=True)
         return None
+
 
 class PortfolioSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
@@ -45,7 +47,7 @@ class PortfolioSerializer(serializers.ModelSerializer):
     
     def get_image_url(self, obj):
         if obj.image:
-            return obj.image.url
+            return obj.image.build_url(secure=True)
         return None
 
 class SkillSerializer(serializers.ModelSerializer):

@@ -16,7 +16,10 @@ class Education(models.Model):
 
     @property
     def image_url(self):
-        return self.image.url if self.image else None
+        if self.image and hasattr(self.image, 'url'):
+            # Get the secure URL from Cloudinary
+            return self.image.build_url(secure=True)
+        return None
 
 class Work(models.Model):
     company = models.CharField(max_length=255)
@@ -33,7 +36,9 @@ class Work(models.Model):
 
     @property
     def image_url(self):
-        return self.image.url if self.image else None
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.build_url(secure=True)
+        return None
 
 class Portfolio(models.Model):
     title = models.CharField(max_length=255)
@@ -52,7 +57,9 @@ class Portfolio(models.Model):
 
     @property
     def image_url(self):
-        return self.image.url if self.image else None
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.build_url(secure=True)
+        return None
 
 class Skills(models.Model):
     skillName = models.CharField(max_length=255)
