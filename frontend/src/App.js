@@ -236,7 +236,7 @@ const HeroSection = ({ homeRef, darkMode }) => (
         
         {/* Larger Circular Image */}
         <img
-          src="/KrishPic2.jpg"
+          src="/KrishPic.jpg"
           alt="Krish Naresh Patil"
           className="w-60 h-60 object-cover rounded-full shadow-2xl ring-8 ring-cyan-500 transition-transform duration-300 transform hover:scale-105"
         />
