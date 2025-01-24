@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import Nav from './Component/Nav';
+import { Analytics } from "@vercel/analytics/react"
 import {
   BookOpen,
   Briefcase,
