@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Code, Terminal, Github } from 'lucide-react';
-import { Analytics } from "@vercel/analytics/react"
 
 const Nav = ({ homeRef, skillsRef, educationRef, workRef, portfolioRef, darkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
