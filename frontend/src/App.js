@@ -35,6 +35,7 @@ import {
   SiTypescript, // Correct import for TypeScript
 } from 'react-icons/si';
 import { VscAzure, VscVscode } from "react-icons/vsc";
+import { Analytics } from "@vercel/analytics/react"
 
 
 
